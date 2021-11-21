@@ -21,7 +21,7 @@ function App() {
             <Route exact path="/home" element={<Home />}></Route>
             <Route exact path="/profile" element={<Profile />}></Route>
             <Route exact path="/" element={<Auth />}></Route>
-            <Route path="/" element={<div>404</div>}></Route>
+            <Route exact element={<div>404</div>}></Route>
           </Routes>
         </div>
         <Footer />
