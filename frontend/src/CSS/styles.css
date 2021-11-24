@@ -11,7 +11,8 @@ a, a:visited, a:hover {
   text-decoration: none;
 }
 
-.auth-container {
+.auth-container,
+.diary-container {
   min-height: 85vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -24,10 +25,31 @@ a, a:visited, a:hover {
           align-items: center;
 }
 
+.one-by-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse wrap;
+          flex-flow: row-reverse wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.one-by-two .left, .one-by-two .right {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+}
+
 .box {
   border-radius: 15px;
   -webkit-box-shadow: 0 0 30px 5px #555;
           box-shadow: 0 0 30px 5px #555;
+}
+
+.btn, .form-group {
+  margin-bottom: 1rem;
 }
 
 .box {
@@ -59,5 +81,18 @@ a, a:visited, a:hover {
 
 .box .signup-box {
   border-radius: 0 15px 15px 0;
+}
+
+.answer {
+  border-bottom: 1px solid #d7d7d7;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+}
+
+.fas {
+  padding: 5px 4px;
+  border-radius: 50%;
+  color: #f1b91f;
 }
 /*# sourceMappingURL=styles.css.map */

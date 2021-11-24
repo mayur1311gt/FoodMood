@@ -18,6 +18,9 @@ function Navbar() {
                             <NavLink to='/profile' className="nav-link">Profile</NavLink>
                         </li>
                         <li className="nav-item">
+                            <NavLink to='/fooddiaries' className="nav-link">Food Diaries</NavLink>
+                        </li>
+                        <li className="nav-item">
                             <NavLink to='/' className="nav-link">Sign In</NavLink>
                         </li>
                     </ul>

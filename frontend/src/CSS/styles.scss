@@ -12,11 +12,22 @@ a,a:visited,a:hover{
     text-decoration: none;
 }
 
-.auth-container{
+.auth-container,
+.diary-container{
     min-height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.one-by-two{
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-around;
+    
+    .left,.right{
+        flex-basis: 45%;
+    }
 }
 
 .box{
@@ -24,6 +35,11 @@ a,a:visited,a:hover{
     box-shadow: $shadow;
 }
 
+.btn,.form-group{
+    margin-bottom: 1rem;
+}
+
 
 @import 'auth';
+@import 'fooddiaries';
 @import 'media';
