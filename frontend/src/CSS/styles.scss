@@ -1,0 +1,45 @@
+@import 'variables';
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #7d7d7d;
+}
+
+a,a:visited,a:hover{
+    list-style: none;
+    text-decoration: none;
+}
+
+.auth-container,
+.diary-container{
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.one-by-two{
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-around;
+    
+    .left,.right{
+        flex-basis: 45%;
+    }
+}
+
+.box{
+    border-radius: 15px;
+    box-shadow: $shadow;
+}
+
+.btn,.form-group{
+    margin-bottom: 1rem;
+}
+
+
+@import 'auth';
+@import 'fooddiaries';
+@import 'media';

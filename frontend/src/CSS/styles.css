@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #7d7d7d;
+}
+
+a, a:visited, a:hover {
+  list-style: none;
+  text-decoration: none;
+}
+
+.auth-container,
+.diary-container {
+  min-height: 85vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.one-by-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse wrap;
+          flex-flow: row-reverse wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.one-by-two .left, .one-by-two .right {
+  -ms-flex-preferred-size: 45%;
+      flex-basis: 45%;
+}
+
+.box {
+  border-radius: 15px;
+  -webkit-box-shadow: 0 0 30px 5px #555;
+          box-shadow: 0 0 30px 5px #555;
+}
+
+.btn, .form-group {
+  margin-bottom: 1rem;
+}
+
+.box {
+  height: 30rem;
+  width: 60rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+}
+
+.box .signup-box, .box .signin-box {
+  background: #f57575;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  padding: 1rem;
+}
+
+.box .signin-box {
+  background: red;
+  border-radius: 15px 0 0 15px;
+}
+
+.box .signup-box {
+  border-radius: 0 15px 15px 0;
+}
+
+.answer {
+  border-bottom: 1px solid #d7d7d7;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 2rem;
+}
+
+.fas {
+  padding: 5px 4px;
+  border-radius: 50%;
+  color: #f1b91f;
+}
+/*# sourceMappingURL=styles.css.map */
