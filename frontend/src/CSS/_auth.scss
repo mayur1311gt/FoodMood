@@ -5,14 +5,33 @@
     flex-flow: row wrap;
     justify-content: stretch;
     
+    // -webkit-border-radius: 50px;
+    // border-radius: 50px;
+    background: #D1D8EC;
+    -webkit-box-shadow: 12px 12px 35px #b2b8c9, -12px -12px 35px #f0f8ff;
+    box-shadow: 12px 12px 35px #b2b8c9, -12px -12px 35px #f0f8ff;
     .signup-box,.signin-box{
-        background: #f57575;
+        // background: #f57575;
         flex-basis: 50%;
-        padding: 1rem;
+        padding: 2rem;
+        button{
+            background: #D1D8EC;
+            border: transparent;
+            -webkit-box-shadow: 12px 12px 35px #b2b8c9, -12px -12px 35px #f0f8ff;
+            box-shadow: 12px 12px 35px #b2b8c9, -12px -12px 35px #f0f8ff;
+        }
+        button:hover{
+            -webkit-box-shadow: 12px 12px 35px #b2b8c9, -12px -12px 35px #f0f8ff;
+            box-shadow: 12px 12px 35px 2px #adb2bd, -12px -12px 35px 2px #f4f9ff;
+        }
+        button:active{
+            background-color: #b3b6c2;
+        }
     }
     .signin-box{
-        background: red;
+        // background: red;
         border-radius: 15px 0 0 15px;
+        border-right: 1px solid #b3b6c2;
     }
     .signup-box{
         border-radius: 0 15px 15px 0;

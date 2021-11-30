@@ -1,0 +1,20 @@
+.container{
+    min-height: 85vh;
+}
+
+@import 'userData';
+
+.create-post-section{
+    box-shadow: $shadow;
+    .all-posts, .saved-posts{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem,20rem));
+        gap: 2rem;
+    }
+}
+
+.user-data,.create-post-section{
+    margin: 0 2rem;
+    // min-height: 20rem;
+}

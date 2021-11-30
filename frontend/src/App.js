@@ -20,7 +20,7 @@ function App() {
         <div>
           <Routes>
             <Route exact path="/home" element={<Home />}></Route>
-            <Route exact path="/profile" element={<Profile />}></Route>
+            <Route exact path="/profile/*" element={<Profile />}></Route>
             <Route exact path="/" element={<Auth />}></Route>
             <Route exact path="/fooddiaries" element={<FoodDiaries />}></Route>
             <Route exact element={<div>404</div>}></Route>

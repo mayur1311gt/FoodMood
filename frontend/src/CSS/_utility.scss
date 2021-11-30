@@ -1,0 +1,69 @@
+
+.auth-container,
+.diary-container
+{
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.one-by-two{
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: space-around;
+    
+    .left,.right{
+        flex-basis: 45%;
+    }
+}
+
+.flex-h{
+    display: flex;
+    flex-flow: row wrap;
+    .j-center{
+        justify-content: center;
+    }
+    .a-center{
+        align-items: center;
+    }
+    .j-stretch{
+        justify-content: stretch;
+    }
+    .j-around{
+        justify-content: space-around;
+    }
+}
+.flex-v{
+    display: flex;
+    flex-flow: column wrap;
+    .j-center{
+        justify-content: center;
+    }
+    .a-center{
+        align-items: center;
+    }
+    .j-stretch{
+        justify-content: stretch;
+    }
+    .j-around{
+        justify-content: space-around;
+    }
+}
+
+.box{
+    border-radius: 15px;
+    box-shadow: $shadow;
+}
+
+.btn,.form-group{
+    margin-bottom: 1rem;
+}
+
+.bg-sec{
+    background-color: $secondary;
+    border: 1px solid $secondary;
+}
+.text-sec{
+    color: $secondary;
+}

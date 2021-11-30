@@ -111,8 +111,9 @@ def AnsFunc(request, id=-1):
         #show for specific id
         else:
             try:
-                answer = Answer.objects.get(answerId = id)
-                answer_serializer = AnswerSerializer(answer)
+                answer = Answer.objects.filter(answersQuesId = id)
+                print(answer)
+                answer_serializer = AnswerSerializer(answer, many=True)
                 return JsonResponse(answer_serializer.data, safe=False)
             except:
                 return JsonResponse("404", safe=False)

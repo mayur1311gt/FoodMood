@@ -8,7 +8,7 @@ class UserModelAdmin(admin.ModelAdmin):
 
 @admin.register(Question)
 class QuestionModelAdmin(admin.ModelAdmin):
-    list_display=['questionId','questionDesc','status','questionOwnerId']
+    list_display=['questionId','questionDesc','status','questionTitle','questionTag','questionOwnerId']
 
 @admin.register(Answer)
 class AnswerModelAdmin(admin.ModelAdmin):
