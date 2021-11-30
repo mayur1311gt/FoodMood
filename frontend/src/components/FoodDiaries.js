@@ -1,6 +1,27 @@
 import React from 'react'
+import {useState, useEffect} from 'react'
 
 function FoodDiaries() {
+
+    const [quest, setQuest] = useState({
+        questionDesc:"",
+        questionTitle:"",
+        questionTag:"",
+    })
+
+    function CreateQues(){
+        console.log("clicked");
+    }
+
+    const HandleInputQues = (e)=>{
+        const value = e.target.value;
+        setQuest({
+            ...quest,
+            [e.target.name]: value
+          });
+        
+    }
+
     return (
         <div className='diary-container'>
             <div className="container px-5">
@@ -15,20 +36,20 @@ function FoodDiaries() {
                         <div className="right">
                             <div className="question-desc form-group">
                                 <label htmlFor="questionDesc" className='form-label'>Describe</label>
-                                <textarea name="questionDesc" id="questionDesc" cols="30" rows="8" className='form-control'></textarea>
+                                <textarea name="questionDesc" id="questionDesc" onChange={HandleInputQues} value={quest.questionDesc} cols="30" rows="8" className='form-control'></textarea>
                             </div>
                         </div>
 
                         <div className="left">
                             <div className="question-title form-group">
                                 <label htmlFor="questionTitle" className='form-label'>Title</label>
-                                <input type="text" name="questionTitle" id="questionTitle" className='form-control' />
+                                <input type="text" name="questionTitle" onChange={HandleInputQues} value={quest.questionTitle} id="questionTitle" className='form-control' />
                             </div>
                             <div className="question-tags form-group">
                                 <label htmlFor="questionTag" className='form-label'>Tags</label>
-                                <input type="text" name="questionTag" id="questionTag" className='form-control' />
+                                <input type="text" name="questionTag" onChange={HandleInputQues} value={quest.questionTag} id="questionTag" className='form-control' />
                             </div>
-                            <button className="btn btn-primary"> Submit </button>
+                            <button className="btn btn-primary" onClick={CreateQues}> Submit </button>
                         </div>
 
                     </div>
