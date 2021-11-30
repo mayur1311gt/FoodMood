@@ -3,5 +3,6 @@ from django.conf.urls import include, url
 from api import views
 
 urlpatterns = [
-    # path('',)
+    path('question/', views.QuesFunc),
+    path('question/<int:id>/', views.QuesFunc),
 ]
