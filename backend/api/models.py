@@ -55,7 +55,10 @@ class Question(models.Model):
     questionId=models.AutoField(primary_key=True)
     questionDesc=models.CharField(max_length=500)
     status=models.BooleanField(default=False)
+    questionTitle = models.CharField(max_length=200)
+    questionTag = models.CharField(max_length=200)
     questionOwnerId=models.ForeignKey(User, on_delete=models.CASCADE)
+
 
 class Answer(models.Model):
     answerId=models.AutoField(primary_key=True)

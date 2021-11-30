@@ -16,12 +16,12 @@ class UserSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ['questionId', 'questionDesc', 'status', 'questionOwnerId']
+        fields = '__all__'
 
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ['answerId', 'answerDesc', 'answersQues', 'answerOwnerId']
+        fields = ['answerId', 'answerDesc', 'answersQuesId', 'answerOwnerId']
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:

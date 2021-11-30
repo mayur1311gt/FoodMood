@@ -1,25 +1,71 @@
 import React from 'react'
-import {useState, useEffect} from 'react'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 function FoodDiaries() {
 
     const [quest, setQuest] = useState({
-        questionDesc:"",
-        questionTitle:"",
-        questionTag:"",
+        questionDesc: "",
+        questionTitle: "",
+        questionTag: "",
     })
 
-    function CreateQues(){
+    const [allQues, setAllQues] = useState([])
+    const [allAns, setAllAns] = useState([])
+
+    // fetch for all questions
+    useEffect(() => {
+        console.log("useeffect");
+        fetch('http://127.0.0.1:8000/api/question/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(resp => resp.json()).then(resp => setAllQues(resp))
+        console.log(allQues);
+
+        // allQues.map(async(i) => {
+        //     await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}`, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         }
+        //     })
+        //     .then(resp => resp.json()).then(resp => {
+        //         allAns[i.questionId] = resp
+        //         setAllAns({...allAns,...resp})
+        //     })
+        //     console.log("ans",allAns)
+        // })
+    }, [])
+
+    // add question
+    const CreateQues = async () => {
         console.log("clicked");
+        let fullQues = {
+            questionDesc: quest.questionDesc,
+            questionTitle: quest.questionTitle,
+            questionTag: quest.questionTag,
+            // This is to be done dynamic
+            questionOwnerId: 1
+        }
+
+        await axios.post('http://127.0.0.1:8000/api/question/', fullQues)
+            .then((res) => {
+                console.log(res.data)
+            })
+
+
+
     }
 
-    const HandleInputQues = (e)=>{
+    const HandleInputQues = (e) => {
         const value = e.target.value;
         setQuest({
             ...quest,
             [e.target.name]: value
-          });
-        
+        });
     }
 
     return (
@@ -82,6 +128,7 @@ function FoodDiaries() {
                                 </div>
                             </div>
                         </div>
+
                         <div className="question card mb-5">
                             <div className="ques1 card-header">
                                 <h5>Let's talk about Peanut Butter.</h5>
@@ -101,6 +148,27 @@ function FoodDiaries() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* ########## iterate through questions from backend */}
+                        {
+                            allQues.map((item) => {
+                                return (
+                                    <div className="question card mb-5" key={item['questionId']}>
+                                        <div className="ques1 card-header">
+                                            <h5>{item['questionTitle']}</h5>
+                                            <p >{item['questionOwnerId']}.</p><p>{item['questionTag']}</p>
+                                        </div>
+                                        <div className="answers card-body">
+                                            <h6>Replies:</h6><br />
+                                            <p>No replies yet</p>
+                                            <div className="answer ans-3">
+                                                <textarea placeholder='Add your opinion here' name="questionDesc" id="questionDesc" cols="30" rows="5" className='form-control'></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
 
                     </div>
                 </div>

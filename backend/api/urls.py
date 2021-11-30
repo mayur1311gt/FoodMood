@@ -5,4 +5,6 @@ from api import views
 urlpatterns = [
     path('question/', views.QuesFunc),
     path('question/<int:id>/', views.QuesFunc),
+    path('answer/<int:id>/', views.AnsFunc),
+    path('answer/', views.AnsFunc),
 ]
