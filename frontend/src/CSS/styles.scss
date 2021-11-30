@@ -4,7 +4,8 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #7d7d7d;
+    // background-color: #c4c4c4;
+    background-color: #D1D8EC;
 }
 
 a,a:visited,a:hover{
@@ -12,34 +13,32 @@ a,a:visited,a:hover{
     text-decoration: none;
 }
 
-.auth-container,
-.diary-container{
-    min-height: 85vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+ul,li{
+    text-decoration: none;
+    list-style: none;
 }
 
-.one-by-two{
-    display: flex;
-    flex-flow: row-reverse wrap;
-    justify-content: space-around;
-    
-    .left,.right{
-        flex-basis: 45%;
+.myList{
+
+    // padding: 0 0 0 1rem;
+    padding: 0;
+    background-color: $header;
+    .list-item{
+        border-left: 1rem solid $header;
+        background-color: $header;
+        padding: 5px 0;
     }
-}
-
-.box{
-    border-radius: 15px;
-    box-shadow: $shadow;
-}
-
-.btn,.form-group{
-    margin-bottom: 1rem;
+    .list-item:hover{
+        border-left: 1rem solid $secondary;
+    }
 }
 
 
 @import 'auth';
+@import 'utility';
+
+@import 'profile';
 @import 'fooddiaries';
 @import 'media';
+
+@import 'fullPost';

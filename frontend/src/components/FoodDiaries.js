@@ -47,14 +47,17 @@ function FoodDiaries() {
                             <div className="answers card-body">
                                 <h6>Replies:</h6><br />
                                 <div className="answer ans-1">
-                                    <p><i class="fas fa-hand-holding-heart"></i> Dark green leafy vegetables (DGLVs) are an excellent source of nutrients including folate, zinc, calcium, iron, magnesium, vitamin C and fiber.
+                                    <p><i className="fas fa-hand-holding-heart"></i> Dark green leafy vegetables (DGLVs) are an excellent source of nutrients including folate, zinc, calcium, iron, magnesium, vitamin C and fiber.
                                         <br /><span>~ Mayur T.</span> </p>
                                 </div>
                                 <div className="answer ans-2">
-                                    <p><i class="fas fa-hand-holding-heart"></i> Berries are a nutritional powerhouse of vitamins, minerals, fiber and antioxidants <br /><span>~ Atharva S.</span> </p>
+                                    <p><i className="fas fa-hand-holding-heart"></i> Berries are a nutritional powerhouse of vitamins, minerals, fiber and antioxidants <br /><span>~ Atharva S.</span> </p>
                                 </div>
                                 <div className="answer ans-3">
-                                    <p><i class="fas fa-hand-holding-heart"></i> Whole eggs are rich in many nutrients including B vitamins, choline, selenium, vitamin A, iron and phosphorus. They’re also loaded with high-quality protein. <br /><span>~ Vishal T.</span> </p>
+                                    <p><i className="fas fa-hand-holding-heart"></i> Whole eggs are rich in many nutrients including B vitamins, choline, selenium, vitamin A, iron and phosphorus. They’re also loaded with high-quality protein. <br /><span>~ Vishal T.</span> </p>
+                                </div>
+                                <div className="answer ans-3">
+                                    <textarea placeholder='Add your opinion here' name="questionDesc" id="questionDesc" cols="30" rows="5" className='form-control'></textarea>
                                 </div>
                             </div>
                         </div>
@@ -67,12 +70,14 @@ function FoodDiaries() {
                                 <h6>Replies:</h6><br />
                                 <div className="answer ans-1">
                                     <p>Studies have shown that eating peanut butter can help lower cholesterol, aid in weight loss and prevent type 2 diabetes. Bet you didn't know this either, but peanut butter glows in the dark after it's exposed to intense light!
-                                        <br /><span>~ Copper.</span> <i class="fas fa-hand-holding-heart"></i></p>
+                                        <br /><span>~ Copper.</span> <i className="fas fa-hand-holding-heart"></i></p>
                                 </div>
                                 <div className="answer ans-2">
-                                    <p>Peanut butter can also be made to make diamonds! How, you ask? Well, simply put, you must recreate the conditions of the lower mantle or Earth for weeks to create a 2-3mm wide diamond. So that’s only about 2,2000 degrees Celsius… On second thought, it may not be a great new business venture, but it’s still an interesting fact.<br /><span>~ Nico Robin.</span> <i class="fas fa-hand-holding-heart"></i></p>
+                                    <p>Peanut butter can also be made to make diamonds! How, you ask? Well, simply put, you must recreate the conditions of the lower mantle or Earth for weeks to create a 2-3mm wide diamond. So that’s only about 2,2000 degrees Celsius… On second thought, it may not be a great new business venture, but it’s still an interesting fact.<br /><span>~ Nico Robin.</span> <i className="fas fa-hand-holding-heart"></i></p>
                                 </div>
-
+                                <div className="answer ans-3">
+                                    <textarea placeholder='Add your opinion here' name="questionDesc" id="questionDesc" cols="30" rows="5" className='form-control'></textarea>
+                                </div>
                             </div>
                         </div>
 

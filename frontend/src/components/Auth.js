@@ -15,7 +15,7 @@ function Auth() {
                             <label htmlFor="signinpassword" className="form-label">Password</label>
                             <input type="password" className="form-control" id="signinpassword" placeholder="Enter password" required />
                         </div>
-                        <button type="button" className="btn btn-secondary form-control logbtn">Submit</button>
+                        <button type="button" className="btn form-control logbtn">Submit</button>
                     </form>
                 </div>
 
@@ -35,7 +35,7 @@ function Auth() {
                             <label htmlFor="password" className="form-label">New Password</label>
                             <input type="password" className="form-control" id="password" placeholder="Enter password" required />
                         </div>
-                        <button type="button" className="btn btn-secondary form-control logbtn">Submit</button>
+                        <button type="button" className="btn form-control logbtn">Submit</button>
                     </form>
                 </div>
             </div>
