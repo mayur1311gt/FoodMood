@@ -1,8 +1,12 @@
 $primary: #7d7d7d;
-$secondary: #f1b91f;
+$secondary: #ffd45f;
 $tertiary: #ec720e;
-$header: #f7f7f7;
+$header: #f3f3f3;
 
 $shadow: 0 0 30px 5px #b2b8c9;
 $neuph-down: #b2b8c9;
 $neuph-up:#f0f8ff;
+
+.card-header{
+    background-color: $header;
+}

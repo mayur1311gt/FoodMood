@@ -25,19 +25,19 @@ function FoodDiaries() {
         .then(resp => resp.json()).then(resp => setAllQues(resp))
         console.log(allQues);
 
-        // allQues.map(async(i) => {
-        //     await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}`, {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         }
-        //     })
-        //     .then(resp => resp.json()).then(resp => {
-        //         allAns[i.questionId] = resp
-        //         setAllAns({...allAns,...resp})
-        //     })
-        //     console.log("ans",allAns)
-        // })
+        allQues.map(async(i) => {
+            await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(resp => resp.json()).then(resp => {
+                allAns[i.questionId] = resp
+                setAllAns({...allAns,...resp})
+            })
+            console.log("ans",allAns)
+        })
     }, [])
 
     // add question
