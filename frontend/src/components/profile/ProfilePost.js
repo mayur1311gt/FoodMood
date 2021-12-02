@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProfilePost() {
+function ProfilePost(props) {
     return (
         <div>
             <div className="post post-1">
@@ -13,10 +13,10 @@ function ProfilePost() {
 						<div className="d-flex justify-content-between">
 							<div className="d-flex mb-3">
 								<div className="me-2">
-									<a href="#!" className="text-dark"><img src="/images/home/user1.jpg" alt="User" className="author-img"/></a>
+									<a href="#!" className="text-dark"><img src={props.user_image_url} alt="User" className="author-img"/></a>
 								</div>
 								<div>
-									<h5 className="mb-0"><a href="#!" className="text-dark">Kiran Acharya</a></h5>
+									<h5 className="mb-0"><a href="#!" className="text-dark">{props.post_name}</a></h5>
 									<p className="mb-0 text-muted">5m</p>
 								</div>
 							</div>
@@ -28,7 +28,7 @@ function ProfilePost() {
 						</div>
 						<div className="post-block__content mb-2">
 							
-							<img src="/images/home/food1.jpg" alt="Content img"/>
+							<img src={props.food_image_url} alt="Content img"/>
 						</div>
 						<div className="mb-1">
 							<div className="d-flex justify-content-between">

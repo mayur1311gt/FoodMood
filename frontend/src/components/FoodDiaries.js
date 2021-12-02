@@ -12,32 +12,53 @@ function FoodDiaries() {
 
     const [allQues, setAllQues] = useState([])
     const [allAns, setAllAns] = useState([])
-
+    
     // fetch for all questions
     useEffect(() => {
-        console.log("useeffect");
-        fetch('http://127.0.0.1:8000/api/question/', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-        .then(resp => resp.json()).then(resp => setAllQues(resp))
-        console.log(allQues);
+        const fun=async ()=>{
+            console.log("useeffect");
+            await fetch('http://127.0.0.1:8000/api/question/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(resp => resp.json()).then(resp => {
+                // setAllQues(resp)
+                // console.log('resp',allQues);
+                return setAllQues(resp)
+            })
+            .then(resp=>{
+                console.log(allQues);
+                allQues.map(async (i) => {
+                    console.log('ghusa');
+                    console.log(i.questionId);
+                    await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}/`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    })
+                    .then(resp => resp.json()).then(resp => {
+                            let temp = allAns
+                            let tempq=i.questionId
+                            let dic={}
+                            dic[tempq]=resp
+                            // console.log(temp);
+                            temp.push(dic)
+                            setAllAns(temp)
+                            // console.log(resp);
+                        })
+                    console.log("ans",allAns)
+                })
+                return resp
+            })
+            console.log('allQues',allQues);
+        }
+        
+        fun()
+        console.log("passed ques");
 
-        // allQues.map(async(i) => {
-        //     await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}`, {
-        //         method: 'GET',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         }
-        //     })
-        //     .then(resp => resp.json()).then(resp => {
-        //         allAns[i.questionId] = resp
-        //         setAllAns({...allAns,...resp})
-        //     })
-        //     console.log("ans",allAns)
-        // })
     }, [])
 
     // add question
@@ -152,15 +173,44 @@ function FoodDiaries() {
                         {/* ########## iterate through questions from backend */}
                         {
                             allQues.map((item) => {
+                                console.log("map hello")
                                 return (
                                     <div className="question card mb-5" key={item['questionId']}>
                                         <div className="ques1 card-header">
                                             <h5>{item['questionTitle']}</h5>
-                                            <p >{item['questionOwnerId']}.</p><p>{item['questionTag']}</p>
+                                            {/* <p >{item['questionOwnerId']}.</p> */}
+                                            <p>{item['questionTag']}</p>
+                                            <hr/>
+                                            <p>{item['questionDesc']}</p>
                                         </div>
                                         <div className="answers card-body">
                                             <h6>Replies:</h6><br />
-                                            <p>No replies yet</p>
+                                            {/* <p>No replies yet</p> */}
+                                            { allAns.map((ans)=>{
+                                                        let key=Object.keys(ans)
+                                                        if(key[0]===item['questionId'])
+                                                        {
+                                                            return(
+                                                                ans[key[0]].map((rep)=>{
+                                                                    return(
+                                                                    <div className="answer ans-1">
+                                                                        <p>{rep['answerDesc']}
+                                                                            <br /><span>~ Copper.</span> <i className="fas fa-hand-holding-heart"></i></p>
+                                                                    </div>
+                                                                    )
+
+                                                                })
+                                                            )
+                                                        }
+                                                        else
+                                                        {
+                                                            return(
+                                                                <div>404</div>
+                                                            )
+                                                        }
+                                                    }
+                                                )
+                                            }
                                             <div className="answer ans-3">
                                                 <textarea placeholder='Add your opinion here' name="questionDesc" id="questionDesc" cols="30" rows="5" className='form-control'></textarea>
                                             </div>

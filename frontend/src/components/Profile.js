@@ -27,7 +27,7 @@ function Profile() {
                         </div>
                         <div className="right card">
                             <div className="card-header bg-sec">
-                                <h3>Username</h3>
+                                <h3>Prathmesh Waghmode</h3>
                             </div>
                             <div className="card-body flex-h a-center j-around">
                                 <div className="square sq-1">
