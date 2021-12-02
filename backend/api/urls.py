@@ -10,7 +10,9 @@ urlpatterns = [
     path('question/<int:id>/', views.QuesFunc),
     path('answer/<int:id>/', views.AnsFunc),
     path('answer/', views.AnsFunc),
-    url(r'^post$', views.PostFunc),
-    url(r'^post/([0-9]+)$', views.PostFunc),
-    url(r'^post/SaveFile$', views.SaveFile),
+    path('post/', views.PostFunc),
+    path('post/<int:id>/', views.PostFunc),
+    # url(r'^post$', views.PostFunc),
+    # url(r'^post/([0-9]+)$', views.PostFunc),
+    # url(r'^post/SaveFile$', views.SaveFile),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

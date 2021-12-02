@@ -147,18 +147,18 @@ def AnsFunc(request, id=-1):
 
 
 @csrf_exempt
-def PostFunc(request, user_id=-1, post_id=-1):
-
+def PostFunc(request, post_id=-1):
+    user_id=1
     if request.method=='GET':
         #show all post of that user
         if(int(post_id) < 0):
-            posts = Post.objects.get(postOwnerId = user_id)
+            posts = Post.objects.filter(postOwnerId = user_id)
             post_serializer = PostSerializer(posts, many=True)
             return JsonResponse(post_serializer.data, safe=False)
         #show for specific id
         else:
             try:
-                post = Answer.objects.get(postOwnerId = user_id, postId=post_id)
+                post = Answer.objects.filter(postOwnerId = user_id, postId=post_id)
                 post_serializer = AnswerSerializer(post)
                 return JsonResponse(post_serializer.data, safe=False)
             except:
