@@ -67,3 +67,14 @@
 .text-sec{
     color: $secondary;
 }
+.text-tert{
+    color: $tertiary;
+}
+
+
+.scale-me{
+    transition: all 0.3s ease-in-out;
+}
+.scale-me:hover{
+    transform: scale(1.1);
+}

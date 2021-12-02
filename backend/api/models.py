@@ -41,7 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     UserPhotoName = models.CharField(max_length=200, null = True)
     objects = UserAccountManager()
-    # userHistory
+    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name']
@@ -79,7 +79,7 @@ class Post(models.Model):
 class Photo(models.Model):
     photoId=models.AutoField(primary_key=True)
     photoName=models.CharField(max_length=100)
-    photoType=models.CharField(max_length=100)
+    photoType=models.CharField(max_length=100, blank=True, null=True)
     postPhotoId=models.ForeignKey(Post, on_delete=models.CASCADE)
 
 class Video(models.Model):

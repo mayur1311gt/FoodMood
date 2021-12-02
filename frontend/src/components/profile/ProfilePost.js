@@ -9,7 +9,7 @@ function ProfilePost(props) {
                     <div className="card-body">body</div>
                     <div className="card-footer">likes comments saved</div>
                 </div> */}
-                <div className="post-block mb-4">
+                <div className="post-block scale-me mb-4">
 						<div className="d-flex justify-content-between">
 							<div className="d-flex mb-3">
 								<div className="me-2">
