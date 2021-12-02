@@ -77,6 +77,11 @@ function FoodDiaries() {
                 console.log(res.data)
             })
 
+        setQuest({
+            questionDesc: "",
+            questionTitle: "",
+            questionTag: "",
+        })
 
 
     }
