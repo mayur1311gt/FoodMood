@@ -31,10 +31,12 @@ ul, li {
   border-left: 1rem solid #f3f3f3;
   background-color: #f3f3f3;
   padding: 5px 0;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .myList .list-item:hover {
-  border-left: 1rem solid #ffd45f;
+  border-left: 1rem solid #edf065;
 }
 
 .box {
@@ -194,12 +196,26 @@ ul, li {
 }
 
 .bg-sec {
-  background-color: #ffd45f;
-  border: 1px solid #ffd45f;
+  background-color: #edf065;
+  border: 1px solid #edf065;
 }
 
 .text-sec {
-  color: #ffd45f;
+  color: #edf065;
+}
+
+.text-tert {
+  color: #ec720e;
+}
+
+.scale-me {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.scale-me:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .container {
@@ -243,7 +259,7 @@ ul, li {
 }
 
 .user-data .left .profile-pic {
-  background: #ffd45f;
+  background: #edf065;
   position: relative;
   height: 8rem;
 }
@@ -290,8 +306,7 @@ ul, li {
 }
 
 .user-data .right .square {
-  border: 1px solid #7d7d7d;
-  background-color: #f3f3f3;
+  background-color: #edf065;
   width: 10rem;
   height: 10rem;
   display: -webkit-box;
@@ -347,7 +362,7 @@ ul, li {
 .fas {
   padding: 5px 4px;
   border-radius: 50%;
-  color: #ffd45f;
+  color: #edf065;
 }
 
 .main-content {

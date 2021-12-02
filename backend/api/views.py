@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 import io
+from django.core.files.storage import default_storage
 
 
 # Create your views here.
@@ -188,3 +189,12 @@ def PostFunc(request, user_id=-1, post_id=-1):
         answer = Answer.objects.get(answerId=id)
         answer.delete()
         return JsonResponse("delete success", safe=False)
+
+
+
+@csrf_exempt
+def SaveFile(request):
+    file = request.FILES['myFile']
+    file_name = default_storage.save(file.name, file)
+
+    return JsonResponse(file_name, safe=False)

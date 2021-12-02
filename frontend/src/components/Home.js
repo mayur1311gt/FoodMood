@@ -4,8 +4,8 @@ import FullPost from './FullPost'
 function Home() {
     return (
         <div className='home-container container'>
-            <h2 className='my-5 ms-5'>Trending</h2>
-            <div className="all-posts">
+            {/* <h2 className='my-5 ms-5'>Trending</h2> */}
+            <div className=" py-5 all-posts">
                 <FullPost/>
                 <FullPost/>
                 <FullPost/>

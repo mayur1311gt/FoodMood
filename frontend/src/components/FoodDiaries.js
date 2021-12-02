@@ -15,6 +15,7 @@ function FoodDiaries() {
 
     // fetch for all questions
     useEffect(() => {
+
         console.log("useeffect");
         fetch('http://127.0.0.1:8000/api/question/', {
             method: 'GET',
@@ -22,22 +23,60 @@ function FoodDiaries() {
                 'Content-Type': 'application/json',
             }
         })
-        .then(resp => resp.json()).then(resp => setAllQues(resp))
+            .then(resp => resp.json()).then(resp => setAllQues(resp))
+        // console.log(allQues);
+
+        fetch('http://127.0.0.1:8000/api/answer/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => res.json()).then(res => setAllAns(res))
+        // console.log(allAns);
+        let newAllQues = []
+        allQues.map((item) => {
+            // console.log(item);
+            let lis = []
+            allAns.forEach((val, ind) => {
+                if (item['questionId'] === val['answersQuesId']) {
+                    lis.push(val)
+                }
+                item['allAns'] = lis;
+            })
+            // console.log(item['allAns']); 
+            console.log(item['allAns'].length);
+            if (item['allAns'].length === 0) {
+                // ######### custom add for no answers to a question
+                item['allAns'] = []
+                let norep = { answersQuesId: item['questionId'], answerDesc: "No Replies" };
+                item['allAns'].push(norep)
+            }
+            newAllQues.push(item);
+            // console.log(newAllQues[1]);
+            // console.log(newAllQues);
+            console.log("---");
+        })
+        // console.log("NewSet");
+        setAllQues(newAllQues);
+        // console.log(allQues[0]['allAns']);
+
         console.log(allQues);
 
-        allQues.map(async(i) => {
-            await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(resp => resp.json()).then(resp => {
-                allAns[i.questionId] = resp
-                setAllAns({...allAns,...resp})
-            })
-            console.log("ans",allAns)
-        })
+
+        // allQues.map(async(i) => {
+        //     await fetch(`http://127.0.0.1:8000/api/answer/${i.questionId}`, {
+        //         method: 'GET',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         }
+        //     })
+        //     .then(resp => resp.json()).then(resp => {
+        //         allAns[i.questionId] = resp
+        //         setAllAns({...allAns,...resp})
+        //     })
+        //     console.log("ans",allAns)
+        // })
     }, [])
 
     // add question
@@ -159,8 +198,19 @@ function FoodDiaries() {
                                             <p >{item['questionOwnerId']}.</p><p>{item['questionTag']}</p>
                                         </div>
                                         <div className="answers card-body">
-                                            <h6>Replies:</h6><br />
-                                            <p>No replies yet</p>
+                                            <h6>Replies:
+                                            </h6><br />
+                                            {/* {
+                                                item['allAns'].map((elem, ind) => {
+                                                    return (
+                                                        <div className="answer ans-1">
+                                                            <p>{ind}. {elem['answerDesc']}
+                                                                <br /><span>~.</span> <i className="fas fa-hand-holding-heart"></i></p>
+                                                        </div>
+                                                    )
+                                                })
+                                            } */}
+
                                             <div className="answer ans-3">
                                                 <textarea placeholder='Add your opinion here' name="questionDesc" id="questionDesc" cols="30" rows="5" className='form-control'></textarea>
                                             </div>

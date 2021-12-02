@@ -66,8 +66,8 @@
         flex-shrink: 1;
         box-shadow: $shadow;
         .square{
-            border: 1px solid $primary;
-            background-color: $header;
+            // border: 2px solid $primary;
+            background-color: $secondary;
             width: 10rem;
             height: 10rem;
             display: flex;
@@ -80,3 +80,7 @@
         border: none;
     }
 }
+
+// .card-header{
+//     color: $tertiary;
+// }
