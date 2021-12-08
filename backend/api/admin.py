@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 @admin.register(User)
 class UserModelAdmin(admin.ModelAdmin):
-    list_display=['user_id','full_name','email','password','username','userbio']
+    list_display=['id','full_name','email','password','username','userbio']
 
 @admin.register(Question)
 class QuestionModelAdmin(admin.ModelAdmin):

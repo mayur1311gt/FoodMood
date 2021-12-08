@@ -29,7 +29,7 @@ def UserFunc(request, id = -1):
     if request.method == "GET":
         if id!=-1:
             try:
-                stu = User.objects.get(user_id=id)
+                stu = User.objects.get(id=id)
                 user_serializer = UserSerializer(stu)
                 return JsonResponse(user_serializer.data, safe=False)
             except:
@@ -67,7 +67,7 @@ def UserFunc(request, id = -1):
         return JsonResponse("problem bro", safe=False)   
 
     elif request.method=="DELETE":
-        thatUser = User.objects.get(user_id=id)
+        thatUser = User.objects.get(id=id)
         thatUser.delete()
         return JsonResponse()
 
