@@ -3,12 +3,16 @@ import {
     Link,
 } from "react-router-dom";
 
-function ProfileCard() {
+function ProfileCard(props) {
+    let ussr = props.theUser
+    let photo_url = process.env.REACT_APP_PHOTOPATH+ussr['UserPhotoName']
+    
     return (
         <div>
             <div className="profile-pic card-header">
                 <div className="img-div">
-                    <img src="https://avatarfiles.alphacoders.com/715/thumb-1920-71560.jpg" alt="profile pic" />
+                    {/* <img src="https://avatarfiles.alphacoders.com/715/thumb-1920-71560.jpg" alt="profile pic" /> */}
+                    <img src={photo_url} alt="profile pic" />
                 </div>
             </div>
             <div className="settings">

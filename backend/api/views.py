@@ -4,19 +4,32 @@ from .serializers import *
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 import io
 from django.core.files.storage import default_storage
 
 
 # Create your views here.
-@csrf_exempt
+@api_view(['GET'])
+def getRoutes(request):
+    routes = [
+        '/api/token',
+        '/api/token/refresh',
+    ]
+    return Response(routes)
+
+
+
+
 # @api_view(['GET', 'POST', "PUT", "PATCH", "DELETE"])
 # @permission_classes([IsAuthenticated])
+@csrf_exempt
 def UserFunc(request, id = -1):
     if request.method == "GET":
         if id!=-1:
             try:
-                stu = User.objects.get(id=id)
+                stu = User.objects.get(user_id=id)
                 user_serializer = UserSerializer(stu)
                 return JsonResponse(user_serializer.data, safe=False)
             except:
@@ -52,6 +65,11 @@ def UserFunc(request, id = -1):
             user_serializer = UserSerializer(stu)
             return JsonResponse(user_serializer.data, safe=False)
         return JsonResponse("problem bro", safe=False)   
+
+    elif request.method=="DELETE":
+        thatUser = User.objects.get(user_id=id)
+        thatUser.delete()
+        return JsonResponse()
 
 
 
@@ -158,8 +176,9 @@ def PostFunc(request, post_id=-1):
         #show for specific id
         else:
             try:
-                post = Answer.objects.filter(postOwnerId = user_id, postId=post_id)
-                post_serializer = AnswerSerializer(post)
+                # post = Post.objects.get(postOwnerId = user_id, postId=post_id)
+                post = Post.objects.get(postId=post_id)
+                post_serializer = PostSerializer(post)
                 return JsonResponse(post_serializer.data, safe=False)
             except:
                 return JsonResponse("404", safe=False)
@@ -169,7 +188,7 @@ def PostFunc(request, post_id=-1):
         stream=io.BytesIO(json_data)
         post_data = JSONParser().parse(stream)
         print(post_data)
-        posts_serializer = AnswerSerializer(data=post_data)
+        posts_serializer = PostSerializer(data=post_data)
         if posts_serializer.is_valid():
             posts_serializer.save()
             return JsonResponse("Added Successfully", safe=False)
@@ -177,17 +196,17 @@ def PostFunc(request, post_id=-1):
         return JsonResponse(s, safe=False)
 
     elif request.method == 'PUT':
-        answer_data = JSONParser().parse(request)
-        answer = Answer.objects.get(answerId = answer_data['answerId'])
-        answer_serializer = AnswerSerializer(answer, answer_data)
-        if answer_serializer.is_valid():
-            answer_serializer.save()
+        post_data = JSONParser().parse(request)
+        post = Post.objects.get(postId = post_data['postId'])
+        post_serializer = PostSerializer(post, post_data)
+        if post_serializer.is_valid():
+            post_serializer.save()
             return JsonResponse("Updated Successfully", safe=False)
         return JsonResponse("Update fail", safe=False)
 
     elif request.method == 'DELETE':
-        answer = Answer.objects.get(answerId=id)
-        answer.delete()
+        post = Post.objects.get(postId=post_id)
+        post.delete()
         return JsonResponse("delete success", safe=False)
 
 

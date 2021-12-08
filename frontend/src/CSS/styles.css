@@ -342,6 +342,20 @@ ul, li {
   gap: 2rem;
 }
 
+.create-post-section .all-posts .post-block, .create-post-section .saved-posts .post-block {
+  height: 25rem;
+}
+
+.create-post-section .all-posts .post-block .post-block__content, .create-post-section .saved-posts .post-block .post-block__content {
+  height: 15rem;
+}
+
+.create-post-section .all-posts .post-block .post-block__content img, .create-post-section .saved-posts .post-block .post-block__content img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .user-data, .create-post-section {
   margin: 0 2rem;
 }

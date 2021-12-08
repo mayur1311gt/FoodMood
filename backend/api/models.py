@@ -41,7 +41,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     userbio=models.CharField(max_length=500, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
-    UserPhotoName = models.CharField(max_length=200, null = True)
+    UserPhotoName = models.CharField(max_length=200, blank=True, default='default.png')
     objects = UserAccountManager()
     
 
@@ -75,7 +75,7 @@ class Post(models.Model):
     postLikes=models.IntegerField(default=0)
     postLocation=models.CharField(max_length=200)
     foodType=models.CharField(max_length=200)
-    postDate=models.DateTimeField()
+    postDate=models.DateTimeField(blank=True, null=True)
     postOwnerId=models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Photo(models.Model):

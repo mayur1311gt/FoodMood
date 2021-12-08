@@ -11,6 +11,16 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(20rem,20rem));
         gap: 2rem;
+        .post-block{
+            height: 25rem;
+            .post-block__content{
+                height: 15rem;
+                img{
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
     }
 }
 

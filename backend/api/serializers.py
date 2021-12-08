@@ -26,7 +26,7 @@ class AnswerSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ['postId', 'postTitle', 'postDescription', 'postLikes', 'postLocation', 'foodType', 'postDate', 'postOwnerId']
+        fields = '__all__'
 
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,7 +1,7 @@
 import React from 'react'
 import ProfilePost from './ProfilePost'
 
-function MyPosts() {
+function MyPosts(props) {
     return (
         <div>
             <h3 className='text-tert card-header'>My Posts</h3>

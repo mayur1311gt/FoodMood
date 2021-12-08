@@ -1,10 +1,8 @@
 import React from 'react'
 import {
-    BrowserRouter as Router,
     Routes,
     Route,
-    Link,
-    useParams
+    
 } from "react-router-dom";
 
 import AddPost from './profile/AddPost'
@@ -15,19 +13,20 @@ import SavedPosts from './profile/SavedPosts'
 
 
 
-function Profile() {
-    
+function Profile(props) {
+   
+
     return (
         <>
             <div className='user-profile-container'>
                 <div className="container p-5">
                     <div className="user-data flex-h mb-4">
                         <div className="left card">
-                            <ProfileCard />
+                            <ProfileCard theUser={props.theUser}/>
                         </div>
                         <div className="right card">
                             <div className="card-header bg-sec text-dark">
-                                <h3>Prathmesh Waghmode</h3>
+                                <h3>{props.theUser['full_name']}</h3>
                             </div>
                             <div className="card-body flex-h a-center j-around">
                                 <div className="square scale-me sq-1">
@@ -49,17 +48,13 @@ function Profile() {
 
                         <div>
                             <Routes>
-                                <Route path="editprofile" element={<EditProfile />}></Route>
+                                <Route path="editprofile" element={<EditProfile theUser={props.theUser}/>}></Route>
                                 <Route path="addpost" element={<AddPost />}></Route>
-                                <Route path="myposts" element={<MyPosts />}></Route>
-                                <Route path="" element={<MyPosts />}></Route>
+                                <Route path="myposts" element={<MyPosts theUser={props.theUser}/>}></Route>
+                                <Route path="" element={<MyPosts theUser={props.theUser}/>}></Route>
                                 <Route path="savedposts" element={<SavedPosts />}></Route>
                             </Routes>
                         </div>
-
-
-
-
 
 
                     </div>

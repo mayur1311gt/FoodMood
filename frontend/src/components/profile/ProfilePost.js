@@ -4,11 +4,7 @@ function ProfilePost(props) {
     return (
         <div>
             <div className="post post-1">
-                {/* <div className="card">
-                    <div className="card-header">user</div>
-                    <div className="card-body">body</div>
-                    <div className="card-footer">likes comments saved</div>
-                </div> */}
+                
                 <div className="post-block scale-me mb-4">
 						<div className="d-flex justify-content-between">
 							<div className="d-flex mb-3">
