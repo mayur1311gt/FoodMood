@@ -1,11 +1,12 @@
-from django.shortcuts import render
 from .models import *
 from .serializers import *
 from django.views.decorators.csrf import csrf_exempt
 from django.http.response import JsonResponse
+from rest_framework import status
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+
 import io
 from django.core.files.storage import default_storage
 
@@ -22,8 +23,8 @@ def getRoutes(request):
 
 
 
-# @api_view(['GET', 'POST', "PUT", "PATCH", "DELETE"])
 # @permission_classes([IsAuthenticated])
+@api_view(['GET', 'POST', "PUT", "PATCH", "DELETE"])
 @csrf_exempt
 def UserFunc(request, id = -1):
     if request.method == "GET":
@@ -42,10 +43,11 @@ def UserFunc(request, id = -1):
         stream=io.BytesIO(json_data)
         user_data=JSONParser().parse(stream)
         user_serializer=UserSerializer(data=user_data)
+        # print(user_serializer)
         if user_serializer.is_valid():
             user_serializer.save()
-            return JsonResponse("Data Posted", safe=False)
-        return JsonResponse(user_serializer.errors, safe=False)     
+            return Response("User created successfully", status.HTTP_201_CREATED)
+        return Response("User creation fail", status.HTTP_400_BAD_REQUEST)     
         
     elif request.method=="PUT":
         print("came here")
@@ -69,11 +71,12 @@ def UserFunc(request, id = -1):
     elif request.method=="DELETE":
         thatUser = User.objects.get(user_id=id)
         thatUser.delete()
-        return JsonResponse()
+        return JsonResponse("Delete Success", safe=False)
 
 
 
 @csrf_exempt
+@api_view(['GET','POST','PUT','DELETE'])
 def QuesFunc(request, id=-1):
 
     if request.method=='GET':
@@ -95,13 +98,11 @@ def QuesFunc(request, id=-1):
         json_data=request.body
         stream=io.BytesIO(json_data)
         question_data = JSONParser().parse(stream)
-        print(question_data)
         questions_serializer = QuestionSerializer(data=question_data)
         if questions_serializer.is_valid():
             questions_serializer.save()
-            return JsonResponse("Added Successfully", safe=False)
-        s = "Add fail"+str(questions_serializer.data)
-        return JsonResponse(s, safe=False)
+            return Response("Added successfully",status.HTTP_201_CREATED)
+        return Response("Add fail",status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'PUT':
         question_data = JSONParser().parse(request)
@@ -113,12 +114,16 @@ def QuesFunc(request, id=-1):
         return JsonResponse("Update fail", safe=False)
 
     elif request.method == 'DELETE':
-        question = Question.objects.get(questionId=id)
-        question.delete()
-        return JsonResponse("delete success", safe=False)
+        try:
+            question = Question.objects.get(questionId=id)
+            question.delete()
+            return Response("Deleted successfully", status.HTTP_204_NO_CONTENT)
+        except:
+            return Response("Delete fail.")
 
 
 @csrf_exempt
+@api_view(['GET','POST','PUT','DELETE'])
 def AnsFunc(request, id=-1):
 
     if request.method=='GET':
@@ -165,6 +170,7 @@ def AnsFunc(request, id=-1):
 
 
 @csrf_exempt
+@api_view(['GET','POST','PUT','DELETE'])
 def PostFunc(request, post_id=-1):
     user_id=1
     if request.method=='GET':
@@ -187,13 +193,13 @@ def PostFunc(request, post_id=-1):
         json_data=request.body
         stream=io.BytesIO(json_data)
         post_data = JSONParser().parse(stream)
-        print(post_data)
+        # print(post_data)
         posts_serializer = PostSerializer(data=post_data)
         if posts_serializer.is_valid():
             posts_serializer.save()
-            return JsonResponse("Added Successfully", safe=False)
+            return Response("Added Successfully", status.HTTP_201_CREATED)
         s = "Add fail"+str(posts_serializer.data)
-        return JsonResponse(s, safe=False)
+        return Response(s, status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'PUT':
         post_data = JSONParser().parse(request)
@@ -205,9 +211,12 @@ def PostFunc(request, post_id=-1):
         return JsonResponse("Update fail", safe=False)
 
     elif request.method == 'DELETE':
-        post = Post.objects.get(postId=post_id)
-        post.delete()
-        return JsonResponse("delete success", safe=False)
+        try:
+            post = Post.objects.get(postId=post_id)
+            post.delete()
+            return Response("delete success", status.HTTP_204_NO_CONTENT)
+        except:
+            return Response("Delete Fail.", status.HTTP_400_BAD_REQUEST)
 
 
 
